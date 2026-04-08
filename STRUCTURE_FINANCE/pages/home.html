@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      // Kiểm tra trạng thái đăng nhập ngay lập tức
+      if (localStorage.getItem("isLoggedIn") !== "true") {
+        window.location.href = "./login.html";
+      }
+    </script>
+    <title>Tài chính cá nhân K25_Rikkei</title>
+    <link rel="stylesheet" href="../css/home.css" />
+  </head>
+  <body>
+    <div class="header">
+      <p>📒 Tài Chính Cá Nhân K25_Rikkei</p>
+      <div class="header-right">
+        <div class="account-dropdown" id="accountDropdown">
+          <p class="account-btn">
+            Tài khoản
+            <img
+              id="accountToggle"
+              src="../assets/images/Vector (1).png"
+              alt="arrow"
+            />
+          </p>
+          <div id="logoutMenu" class="logout-menu hidden">
+            <div class="user-info-box">
+              <div class="avatar-circle">
+                <img
+                  src="../assets/images/user-default.png"
+                  alt=""
+                  id="userAvatar"
+                />
+              </div>
+              <div class="user-details">
+                <strong id="userNameDisplay">Chưa cập nhật</strong>
+                <span id="userEmailDisplay">email@example.com</span>
+              </div>
+            </div>
+
+            <hr class="menu-divider" />
+
+            <button id="logoutBtn" class="logout-item logout-btn">
+              Logout
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="layout-container">
+      <div class="menu-container">
+        <button
+          class="menu-btn solid"
+          onclick="window.location.href = 'home.html'"
+        >
+          <img src="../assets/images/Vector (4).png" alt="" />
+          <span class="text">Information</span>
+        </button>
+
+        <button
+          class="menu-btn outline"
+          onclick="window.location.href = 'category.html'"
+        >
+          <img src="../assets/images/Vector (5).png" alt="" />
+          <span class="text">Category</span>
+        </button>
+
+        <button
+          class="menu-btn outline"
+          onclick="window.location.href = 'history.html'"
+        >
+          <img src="../assets/images/Vector (6).png" alt="" />
+          <span class="text">History</span>
+        </button>
+      </div>
+
+      <div class="section">
+        <div class="section1">
+          <h2>🎯 Kiểm soát chi tiêu thông minh</h2>
+          <p>Theo dõi ngân sách và thu chi hằng tháng dễ dàng</p>
+        </div>
+
+        <h1>📊 Quản Lý Tài Chính Cá Nhân</h1>
+
+        <div class="section2">
+          <p>Số tiền còn lại</p>
+          <p id="money">0 VND</p>
+        </div>
+
+        <div class="section3">
+          <p>📅 Chọn tháng: <input type="month" id="monthPicker" /></p>
+        </div>
+
+        <div class="section4">
+          <p>
+            💰 Ngân sách tháng:
+            <input type="number" id="budgetInput" placeholder="VD: 50000000" />
+            <button id="saveBudgetBtn">Lưu</button>
+          </p>
+          <div
+            id="budgetWarning"
+            style="
+              color: red;
+              margin-top: 10px;
+              display: none;
+              font-weight: bold;
+            "
+          >
+            ⚠️ Vui lòng nhập mức tiền chi tiêu!
+          </div>
+          <div
+            id="budgetSuccess"
+            style="
+              color: green;
+              margin-top: 10px;
+              display: none;
+              font-weight: bold;
+            "
+          >
+            ✓ Lưu ngân sách thành công!
+          </div>
+        </div>
+
+        <h1>Quản Lý Thông tin cá nhân</h1>
+        <form id="mainProfileForm">
+          <div class="input1">
+            <label>Name <span class="times">*</span></label
+            ><br />
+            <input
+              placeholder="Vui lòng nhập tên người dùng"
+              type="text"
+              id="mainName"
+              readonly
+            /><br />
+            <label>Phone <span class="times">*</span></label
+            ><br />
+            <input
+              placeholder="Vui lòng nhập sđt người dùng"
+              type="tel"
+              id="mainPhone"
+              readonly
+            /><br />
+          </div>
+          <div class="input2">
+            <label>Email <span class="times">*</span></label
+            ><br />
+            <input type="email" id="mainEmail" readonly /><br />
+            <label>Gender <span class="times">*</span></label
+            ><br />
+            <input type="text" id="mainGender" readonly /><br />
+          </div>
+        </form>
+
+        <div class="button1">
+          <button type="button" id="openInfoModal">Change Information</button>
+          <button type="button" id="openPassModal">Change Password</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="infoModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>Change Information</h3>
+          <span class="close-btn" id="closeModal">&times;</span>
+        </div>
+        <form id="editInfoForm">
+          <div class="form-group">
+            <label>Name <span class="times">*</span></label>
+            <input type="text" id="editName" required />
+          </div>
+          <div class="form-group">
+            <label>Email <span class="times">*</span></label>
+            <input type="email" id="editEmail" required />
+          </div>
+          <div class="form-group">
+            <label>Phone <span class="times">*</span></label>
+            <input type="tel" id="editPhone" required />
+          </div>
+          <div class="form-group">
+            <label>Gender <span class="times">*</span></label>
+            <select id="editGender">
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn-cancel" id="cancelBtn">
+              Cancel
+            </button>
+            <button type="submit" class="btn-save">Save</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div id="passModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>Change Password</h3>
+          <span class="close-btn" id="closePassModal">&times;</span>
+        </div>
+        <form id="editPassForm">
+          <div class="form-group">
+            <label>Old Password <span class="times">*</span></label>
+            <input type="password" id="currentPass" required />
+          </div>
+          <div class="form-group">
+            <label>New Password <span class="times">*</span></label>
+            <input type="password" id="newPass" required />
+          </div>
+          <div class="form-group">
+            <label>Confirm New Password <span class="times">*</span></label>
+            <input type="password" id="confirmPass" required />
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn-cancel" id="cancelPassBtn">
+              Cancel
+            </button>
+            <button type="submit" class="btn-save">Save</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div id="toast" class="toast hidden"></div>
+
+    <div id="logoutConfirmModal" class="modal">
+      <div class="modal-content logout-modal-size">
+        <div class="modal-header">
+          <h3 style="font-size: 20px; color: #1a202c">Xác nhận</h3>
+        </div>
+        <div class="modal-body" style="padding: 10px 0">
+          <p style="color: #718096; font-size: 15px">
+            Bạn có chắc chắn muốn đăng xuất khỏi hệ thống không?
+          </p>
+        </div>
+        <hr class="modal-divider" />
+        <div class="modal-footer">
+          <button type="button" class="btn-cancel" id="closeLogoutModal">
+            Hủy
+          </button>
+          <button type="button" class="btn-delete-red" id="confirmLogoutBtn">
+            Đăng xuất
+          </button>
+        </div>
+      </div>
+    </div>
+    <script src="../js/home.js"></script>
+  </body>
+</html>

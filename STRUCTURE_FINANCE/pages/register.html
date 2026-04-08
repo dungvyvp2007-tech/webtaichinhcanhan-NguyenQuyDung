@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hệ thống quản lý tài chính cá nhân - Đăng ký</title>
+    <link rel="stylesheet" href="../css/register.css" />
+  </head>
+
+  <body>
+    <div class="signUpPage" id="signupForm">
+      <h1>Sign Up</h1>
+      <input type="email" placeholder="Email here....." id="emailSignUp" />
+      <p class="error" id="errorEmail">Please enter your email...</p>
+      <input type="password" id="inputPass" placeholder="Password here......" />
+      <p class="error" id="errorPass">Please enter your password...</p>
+      <input
+        type="password"
+        id="confirmPass"
+        placeholder="Confirm password here......"
+      />
+      <p class="error" id="errorRePass">
+        Please enter your confirm password...
+      </p>
+      <button type="submit" id="submit">Sign Up</button>
+      <p id="text">You have account? <a href="./login.html">Sign in</a></p>
+    </div>
+    <script src="../js/register.js"></script>
+  </body>
+</html>

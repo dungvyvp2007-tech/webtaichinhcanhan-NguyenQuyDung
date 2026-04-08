@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      if (localStorage.getItem("isLoggedIn") !== "true") {
+        window.location.href = "./login.html";
+      }
+    </script>
+    <title>Tài chính cá nhân K25_Rikkei</title>
+    <link rel="stylesheet" href="../css/history.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="header">
+      <p>📒 Tài Chính Cá Nhân K25_Rikkei</p>
+      <div class="header-right">
+        <div class="account-dropdown" id="accountDropdown">
+          <p class="account-btn">
+            Tài khoản
+            <img
+              id="accountToggle"
+              src="../assets/images/Vector (1).png"
+              alt="arrow"
+            />
+          </p>
+          <div id="logoutMenu" class="logout-menu hidden">
+            <div class="user-info-box">
+              <div class="avatar-circle">
+                <img
+                  src="../assets/images/user-default.png"
+                  alt=""
+                  id="userAvatar"
+                />
+              </div>
+              <div class="user-details">
+                <strong id="userNameDisplay">Chưa cập nhật</strong>
+                <span id="userEmailDisplay">email@example.com</span>
+              </div>
+            </div>
+
+            <hr class="menu-divider" />
+
+            <button id="logoutBtn" class="logout-item logout-btn">
+              Logout
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="layout-container">
+      <div class="menu-container">
+        <button
+          class="menu-btn outline"
+          onclick="window.location.href = 'home.html'"
+        >
+          <img src="../assets/images/Vector (7).png" alt="" />
+          <span class="text">Information</span>
+        </button>
+
+        <button
+          class="menu-btn outline"
+          onclick="window.location.href = 'category.html'"
+        >
+          <img src="../assets/images/Vector (5).png" alt="" />
+          <span class="text">Category</span>
+        </button>
+
+        <button
+          class="menu-btn solid"
+          onclick="window.location.href = 'history_new.html'"
+        >
+          <img src="../assets/images/Vector (12).png" alt="" />
+          <span class="text">History</span>
+        </button>
+      </div>
+
+      <div class="section">
+        <div class="section1">
+          <h2>🎯 Kiểm soát chi tiêu thông minh</h2>
+          <p>Theo dõi ngân sách và thu chi hằng tháng dễ dàng</p>
+        </div>
+
+        <h1>📊 Quản Lý Tài Chính Cá Nhân</h1>
+
+        <div class="section2">
+          <p>Số tiền còn lại</p>
+          <p id="money">0 VND</p>
+        </div>
+
+        <div class="section3">
+          <p>📅 Chọn tháng: <input type="month" id="monthPicker" /></p>
+        </div>
+
+        <div class="section4">
+          <div class="section4-title">
+            <span>💼</span>
+            <p>Thêm giao dịch</p>
+          </div>
+          <div class="section4-form">
+            <input type="text" id="amountInput" placeholder="Số tiền" />
+
+            <select id="categorySelect">
+              <option value="">Danh mục chi tiêu</option>
+            </select>
+
+            <input type="text" id="noteInput" placeholder="Ghi chú" />
+
+            <button id="addTransactionBtn">Thêm</button>
+          </div>
+        </div>
+
+        <div class="section4">
+          <div class="section4-title">
+            <span>🧾</span>
+            <p>Lịch sử giao dịch (theo tháng)</p>
+          </div>
+          <div class="history-header">
+            <div class="history-actions">
+              <select class="small-select" id="sortSelect">
+                <option value="none">Sắp xếp theo giá</option>
+                <option value="desc">Giảm dần</option>
+                <option value="asc">Tăng dần</option>
+              </select>
+              <div class="search-box">
+                <input
+                  id="searchInput"
+                  type="text"
+                  placeholder="Tìm nội dung"
+                />
+                <button class="btn-search" id="searchBtn">🔍</button>
+              </div>
+            </div>
+          </div>
+          <table class="history-table">
+            <thead>
+              <tr>
+                <th class="text-center">STT</th>
+                <th>Category</th>
+                <th>Budget</th>
+                <th>Note</th>
+                <th class="text-center">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="historyTableBody"></tbody>
+          </table>
+          <div class="pagination" id="pagination"></div>
+        </div>
+        <div class="section4">
+          <div class="section4-title">
+            <span>📈</span>
+            <p>Thống kê chi tiêu theo tháng</p>
+          </div>
+          <div class="history-header">
+            <div class="history-actions">
+              <select class="small-select" id="monthStatusFilter">
+                <option value="all">Tất cả trạng thái</option>
+                <option value="achieved">Đạt</option>
+                <option value="notAchieved">Không đạt</option>
+              </select>
+            </div>
+          </div>
+          <table class="stats-table">
+            <thead>
+              <tr>
+                <th>Tháng</th>
+                <th>Ngân sách</th>
+                <th>Chi tiêu</th>
+                <th class="text-center">Trạng thái</th>
+              </tr>
+            </thead>
+            <tbody id="statsTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div id="toast" class="toast hidden"></div>
+    <script src="../js/history.js"></script>
+
+    <div id="logoutConfirmModal" class="modal">
+      <div class="modal-content logout-modal-size">
+        <div class="modal-header">
+          <h3 style="font-size: 20px; color: #1a202c">Xác nhận</h3>
+        </div>
+        <div class="modal-body" style="padding: 10px 0">
+          <p style="color: #718096; font-size: 15px">
+            Bạn có chắc chắn muốn đăng xuất khỏi hệ thống không?
+          </p>
+        </div>
+        <hr class="modal-divider" />
+        <div class="modal-footer">
+          <button type="button" class="btn-cancel" id="closeLogoutModal">
+            Hủy
+          </button>
+          <button type="button" class="btn-delete-red" id="confirmLogoutBtn">
+            Đăng xuất
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

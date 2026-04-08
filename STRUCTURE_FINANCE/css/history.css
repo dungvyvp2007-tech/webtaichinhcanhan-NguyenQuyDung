@@ -1,0 +1,703 @@
+/* --- RESET & CƠ BẢN --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+    background: #F2F2F2;
+}
+
+/* --- HEADER --- */
+.header {
+    height: 60px;
+    background: #4338CA;
+    color: white;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 30px;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.account-dropdown {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+.account-btn {
+    color: white;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+/* Ghi đè lại logout-menu cũ */
+.logout-menu {
+    position: absolute;
+    right: 0;
+    top: 40px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    z-index: 100;
+    min-width: 260px;
+    overflow: hidden; /* Để bo góc phần màu xám */
+    padding: 0; /* Xóa padding cũ */
+}
+
+/* Khối màu xám chứa tên và email */
+.user-info-box {
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    gap: 12px;
+    background-color: #E5E5E5; /* Màu xám giống ảnh mẫu */
+}
+
+.avatar-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #ccc;
+    overflow: hidden;
+}
+
+.avatar-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.user-details {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+#userNameDisplay {
+    font-size: 15px;
+    font-weight: 700;
+    color: #000;
+}
+
+#userEmailDisplay {
+    font-size: 13px;
+    color: #444;
+}
+
+.menu-divider {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 0;
+}
+
+/* Nút Logout nằm dưới đường kẻ */
+.logout-item {
+    width: 100%;
+    padding: 12px 16px;
+    border: none;
+    background: none;
+    text-align: left;
+    cursor: pointer;
+    color: #ef4444; /* Màu đỏ cho chữ Logout */
+    font-weight: 600;
+}
+
+.logout-item:hover {
+    background-color: #f9f9f9;
+}
+
+.logout-btn {
+    background: #ef4444;
+    color: white;
+    border: 1px solid #dc2626;
+    border-radius: 6px;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s;
+}
+
+.logout-btn:hover {
+    background: #dc2626;
+}
+
+.hidden {
+    display: none;
+}
+
+/* --- LAYOUT & MENU --- */
+.layout-container {
+    display: flex;
+    padding: 24px;
+    gap: 40px;
+}
+
+.menu-container {
+    position: fixed;
+    top: 90px;
+    left: 30px;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.menu-btn {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    font-size: 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid #5a4ad1;
+    text-decoration: none;
+}
+
+.menu-btn.outline {
+    background-color: white;
+    color: #333;
+}
+
+.menu-btn.outline:hover {
+    background-color: #f0efff;
+}
+
+.menu-btn.solid {
+    background-color: #5a4ad1;
+    color: white;
+}
+
+.menu-btn.solid:hover {
+    background-color: #483ab3;
+}
+
+.menu-btn .text {
+    flex-grow: 1;
+    text-align: center;
+}
+
+/* --- CONTENT SECTIONS --- */
+.section {
+    width: 650px;
+    margin: 0 auto;
+}
+
+.section1 {
+    background: #4F46E5;
+    color: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    text-align: center;
+    line-height: 32px;
+}
+
+h1 {
+    margin-top: 25px;
+    font-size: 22px;
+    color: #4F46E5;
+    line-height: 50px;
+    text-align: center;
+}
+
+.section2,
+.section3,
+.section4 {
+    margin-top: 15px;
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    color: #6B7280;
+    text-align: center;
+}
+
+#money {
+    color: #22C55E;
+    line-height: 32px;
+    font-size: 24px;
+}
+
+.section3 input {
+    padding: 10px;
+    margin: 8px 0;
+    width: 250px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
+
+/* --- SECTION 4 (FORM THÊM GIAO DỊCH) --- */
+.section4-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #374151;
+}
+
+.section4-form {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.section4-form select,
+.section4-form input {
+    width: 50px;
+    height: 42px;
+    padding: 0 12px;
+    border: 1px solid #D1D5DB;
+    border-radius: 8px;
+    outline: none;
+    font-size: 14px;
+}
+
+/* Tỉ lệ độ rộng các ô */
+#amountInput { flex: 1.5; }
+#categorySelect { flex: 2; }
+#noteInput { flex: 3; }
+
+#addTransactionBtn {
+    flex: 1;
+    height: 42px;
+    background: linear-gradient(to right, #4F46E5, #6366F1);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: opacity 0.2s ease;
+}
+
+#addTransactionBtn:hover {
+    opacity: 0.9;
+}
+
+/* --- SEARCH & FILTER --- */
+.history-header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 15px;
+    gap: 10px;
+}
+
+.history-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.small-select, .search-box input {
+    padding: 8px;
+    border: 1px solid #e2e8f0;
+    border-radius: 4px;
+    font-size: 12px;
+    outline: none;
+}
+
+.search-box {
+    display: flex;
+    border: 1px solid #e2e8f0;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.search-box input {
+    border: none;
+    width: 120px;
+}
+
+.btn-search {
+    background: #2b6cb0;
+    color: white;
+    border: none;
+    padding: 0 10px;
+    cursor: pointer;
+}
+
+/* --- TABLES --- */
+.history-table,
+.stats-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+
+.history-table th,
+.stats-table th,
+.history-table td,
+.stats-table td {
+    text-align: left;
+    padding: 12px 0;
+    border-bottom: 1px solid #edf2f7;
+}
+
+.history-table th,
+.stats-table th {
+    border-bottom: 2px solid #edf2f7;
+    color: #4a5568;
+    font-weight: 600;
+}
+
+.text-center {
+    text-align: center !important;
+}
+
+.history-table th:first-child,
+.history-table td:first-child {
+    width: 40px;
+}
+
+/* --- TRẠNG THÁI & ICON --- */
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 88px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.badge-achieved {
+    background: #daf5e5;
+    color: #15803d;
+}
+
+.badge-not-achieved {
+    background: #ffe4e6;
+    color: #b91c1c;
+}
+
+.btn-icon {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center; /* Căn giữa nội dung bên trong button */
+    width: 32px;
+    height: 32px;
+}
+
+.btn-icon img {
+    width: 16px;
+    height: 16px;
+}
+
+.btn-icon:hover {
+    opacity: 0.7;
+}
+
+/* --- TOAST --- */
+.toast {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 9999;
+    min-width: 250px;
+    padding: 14px 20px;
+    border-radius: 8px;
+    color: white;
+    font-weight: 600;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background-color: #1f2a44;
+    border-left: 4px solid #4F46E5;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    pointer-events: none;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+/* --- PHÂN TRANG (PAGINATION) --- */
+.pagination {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+}
+
+.page-item {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #E2E8F0;
+    background: white;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #1E293B;
+    transition: all 0.2s;
+}
+
+.page-item:hover {
+    border-color: #4F46E5;
+    color: #4F46E5;
+}
+
+.page-item.active {
+    background-color: #4F46E5;
+    color: white;
+    border-color: #4F46E5;
+}
+
+.page-item:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+/* --- BADGE TRẠNG THÁI THỐNG KÊ --- */
+.status-badge {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    display: inline-block;
+    min-width: 80px;
+    text-align: center;
+}
+
+.badge-achieved {
+    background-color: #DCFCE7;
+    color: #166534;
+}
+
+.badge-notAchieved {
+    background-color: #FEE2E2;
+    color: #991B1B;
+}
+
+/* --- RESPONSIVE --- */
+
+/* Tablet (Dưới 1024px) */
+@media (max-width: 1024px) {
+    .layout-container {
+        flex-direction: column; /* Đẩy menu lên trên nội dung */
+        align-items: center;
+        gap: 20px;
+        padding: 15px;
+    }
+
+    .menu-container {
+        position: static; /* Bỏ chế độ cố định bên trái */
+        width: 100%;
+        max-width: 650px;
+        flex-direction: row; /* Chuyển menu thành hàng ngang */
+        justify-content: center;
+        flex-wrap: wrap; /* Tự xuống hàng nếu thiếu chỗ */
+    }
+
+    .menu-btn {
+        flex: 1;
+        min-width: 150px;
+        font-size: 16px;
+        padding: 10px;
+    }
+
+    .section {
+        width: 100%; /* Giãn rộng hết màn hình */
+        max-width: 650px;
+    }
+}
+
+/* Mobile (Dưới 768px) */
+@media (max-width: 768px) {
+    .header {
+        padding: 0 15px;
+        justify-content: space-between;
+    }
+
+    .header p {
+        font-size: 14px;
+    }
+
+    /* Form thêm giao dịch chuyển thành hàng dọc */
+    .section4-form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .section4-form select,
+    .section4-form input,
+    #addTransactionBtn {
+        width: 100% !important; /* Ghi đè các giá trị flex cũ */
+        flex: none;
+    }
+
+    /* Lịch sử giao dịch: Cho phép cuộn ngang bảng trên mobile */
+    .section4 {
+        padding: 15px;
+        overflow-x: auto;
+    }
+
+    .history-table, .stats-table {
+        min-width: 500px; /* Đảm bảo bảng không bị quá hẹp gây vỡ chữ */
+    }
+
+    /* Tiêu đề và bộ lọc */
+    .history-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .history-actions {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .search-box {
+        flex-grow: 1;
+    }
+
+    .search-box input {
+        width: 100%;
+    }
+
+    .pagination {
+        justify-content: center;
+    }
+}
+
+/* Mobile nhỏ (Dưới 480px) */
+@media (max-width: 480px) {
+    .section1 h2 {
+        font-size: 18px;
+    }
+
+    #money {
+        font-size: 20px;
+    }
+
+    .menu-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Chia 2 cột cho các nút menu */
+        gap: 8px;
+    }
+
+    .menu-btn {
+        min-width: unset;
+        padding: 8px;
+    }
+
+    .menu-btn .text {
+        font-size: 13px;
+    }
+}
+
+/* Kích thước riêng cho modal logout */
+.logout-modal-size {
+    width: 450px !important;
+    padding: 24px !important;
+}
+
+/* Đường gạch ngang mảnh */
+.modal-divider {
+    border: 0;
+    border-top: 1px solid #edf2f7;
+    margin: 15px 0;
+}
+
+/* Nút xóa màu đỏ */
+.btn-delete-red {
+    background-color: #e53e3e;
+    color: white;
+    border: none;
+    padding: 8px 24px;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.btn-delete-red:hover {
+    background-color: #c53030;
+}
+
+/* Modal chung */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: #fff;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 450px;
+    padding: 24px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.16);
+}
+
+/* Kích thước riêng cho modal logout */
+.logout-modal-size {
+    width: 100% !important;
+    max-width: 450px !important;
+    padding: 24px !important;
+}
+
+/* Đường gạch ngang mảnh */
+.modal-divider {
+    border: 0;
+    border-top: 1px solid #edf2f7;
+    margin: 15px 0;
+}
+/* Container chứa 2 nút - đẩy về bên phải */
+.modal-footer {
+    display: flex;
+    justify-content: flex-end; /* Đẩy nội dung sang phải */
+    gap: 12px; /* Khoảng cách giữa 2 nút */
+    margin-top: 10px;
+}
+
+/* Định dạng nút Hủy giống trong ảnh */
+.btn-cancel {
+    background-color: white;
+    color: #4a5568; /* Màu chữ xám đậm */
+    border: 1px solid #e2e8f0; /* Viền xám mảnh */
+    padding: 8px 24px;
+    border-radius: 8px; /* Bo góc nhẹ */
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-cancel:hover {
+    background-color: #f7fafc;
+    border-color: #cbd5e0;
+}

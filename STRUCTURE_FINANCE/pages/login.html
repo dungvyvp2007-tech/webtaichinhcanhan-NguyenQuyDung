@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hệ thống quản lý tài chính cá nhân - Đăng nhập</title>
+    <link rel="stylesheet" href="../css/login.css" />
+  </head>
+  <body>
+    <form class="signInPage" id="loginForm">
+      <h1><img src="../assets/icons/Heading 2 → 🔐 Đăng nhập.png" alt="" /></h1>
+      <p id="successMessage" class="success-message"></p>
+
+      <input type="email" id="emailLogin" placeholder="Email..." />
+      <p id="errorEmail" class="error-msg">Please enter your email ...</p>
+
+      <input type="password" id="passwordLogin" placeholder="Password..." />
+      <p id="errorPassword" class="error-msg">Please enter your password ...</p>
+
+      <button type="submit" id="loginBtn">Sign in</button>
+      <p>You don't have account ?<a href="./register.html">Sign Up Now</a></p>
+    </form>
+    <script src="../js/login.js"></script>
+  </body>
+</html>

@@ -1,0 +1,663 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #F2F2F2;
+}
+.section {
+    width: 650px;
+    margin: 0 auto;
+}
+.menu-container {
+    position: fixed;
+    top: 90px;
+    left: 40px;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Style chung cho các nút */
+.menu-btn {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    font-size: 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid #5a4ad1; /* Màu tím chủ đạo */
+    text-decoration: none;
+}
+
+/* Nút dạng viền (Outline) */
+.menu-btn.outline {
+    background-color: white;
+    color: #333;
+}
+
+.menu-btn.outline:hover {
+    background-color: #f0efff;
+}
+
+/* Nút dạng đặc (Solid) - Nút History */
+.menu-btn.solid {
+    background-color: #5a4ad1;
+    color: white;
+}
+
+.menu-btn.solid:hover {
+    background-color: #483ab3;
+}
+
+/* Căn chỉnh Icon và Text */
+.icon {
+    width: 30px;
+    font-size: 20px;
+    margin-right: 15px;
+    text-align: center;
+}
+
+.text {
+    flex-grow: 1;
+    text-align: center;
+}
+
+/* Loại bỏ outline mặc định khi click */
+.menu-btn:focus {
+    outline: none;
+}
+
+/* LAYOUT CONTAINER */
+.layout-container {
+    padding: 24px;
+
+}
+
+/* HEADER */
+.header {
+    height: 60px;
+    background: #4338CA;
+    color: white;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 30px;
+    font-weight: 400;
+}
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.account-dropdown {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+.account-btn {
+    color: white;
+    font-weight: 400;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+/* Ghi đè lại logout-menu cũ */
+.logout-menu {
+    position: absolute;
+    right: 0;
+    top: 40px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    z-index: 100;
+    min-width: 260px;
+    overflow: hidden; /* Để bo góc phần màu xám */
+    padding: 0; /* Xóa padding cũ */
+}
+
+/* Khối màu xám chứa tên và email */
+.user-info-box {
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    gap: 12px;
+    background-color: #E5E5E5; /* Màu xám giống ảnh mẫu */
+}
+
+.avatar-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #ccc;
+    overflow: hidden;
+}
+
+.avatar-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.user-details {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+#userNameDisplay {
+    font-size: 15px;
+    font-weight: 700;
+    color: #000;
+}
+
+#userEmailDisplay {
+    font-size: 13px;
+    color: #444;
+}
+
+.menu-divider {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 0;
+}
+
+/* Nút Logout nằm dưới đường kẻ */
+.logout-item {
+    width: 100%;
+    padding: 12px 16px;
+    border: none;
+    background: none;
+    text-align: left;
+    cursor: pointer;
+    color: #ef4444; /* Màu đỏ cho chữ Logout */
+    font-weight: 600;
+}
+
+.logout-item:hover {
+    background-color: #f9f9f9;
+}
+
+.hidden {
+    display: none;
+}
+
+.logout-btn {
+    background: #ef4444;
+    color: white;
+    border: 1px solid #dc2626;
+    border-radius: 6px;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.logout-btn:hover {
+    background: #dc2626;
+}
+
+.header img {
+    cursor: pointer;
+}
+
+/* active menu */
+#information {
+    background: #4338CA;
+    color: white;
+}
+
+
+/* CONTENT */
+.section1,
+.section2,
+.section3,
+.section4,
+h1,
+form,
+.button1 {
+    width: 100%;
+}
+/* Banner */
+.section1 {
+    background: #4F46E5;
+    color: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    text-align: center;
+    font-weight: 400;
+    line-height: 32px;
+}
+
+/* Title */
+h1 {
+    margin-top: 25px;
+    font-size: 22px;
+    color: #4F46E5;
+    line-height: 50px;
+    text-align: center;
+}
+
+/* Card */
+.section2,
+.section3,
+.section4{
+    margin-top: 15px;
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    text-align: center;
+    color: #6B7280;
+}
+#money{
+    color: #22C55E;
+    line-height: 32px;
+    font-size: 24px;
+}
+
+#date{
+    border: 1px solid #DEE2E6;
+    padding: 5px;
+    margin: 10px;
+    color: black;
+}
+
+/* Inputs */
+input,select {
+    padding: 10px;
+    margin: 8px 0;
+    width: 250px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background-color: white;
+}
+
+/* Buttons */
+button {
+    padding: 10px 18px;
+    background: #3B82F6;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 400;
+}
+.button1{
+    display: flex;
+}
+button:hover {
+    opacity: 0.9;
+}
+
+/* Form layout */
+form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.input1,
+.input2 {
+    flex: 1 1 48%;
+    min-width: 280px;
+}
+.input1 input,
+.input1 select,
+.input2 input,
+.input2 select {
+    height: 44px;
+    width: 100%;
+}
+.input1 label,
+.input2 label {
+    text-align: left;
+    display: block;
+    margin-bottom: -18px;
+    font-weight: 600;
+}
+.times {
+    color: red;
+}
+
+
+/* Bottom buttons */
+.button1 {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 760px;
+    font-weight: 700;
+}
+
+.button1 button {
+    flex: 1;
+    color: #4F46E5;
+    background-color: #F4F2FD;
+    border: 2px solid #4F46E5;
+}
+
+/* TOAST */
+.toast {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 9999;
+    min-width: 220px;
+    max-width: 320px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    color: white;
+    font-weight: 600;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: all 0.3s ease;
+    pointer-events: none;
+    text-align: center;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.toast.success {
+    background-color: #22c55e;
+}
+
+.toast.error {
+    background-color: #ef4444;
+}
+
+.toast.hidden {
+    display: none;
+}
+
+/* Thiết lập nền mờ bao phủ toàn màn hình */
+.modal {
+  display: none; /* Mặc định ẩn đi */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Màu nền đen mờ */
+}
+
+/* Khối nội dung chính giữa */
+.modal-content {    
+  background-color: #fff;
+  margin: 5% auto;
+  padding: 20px;
+  border-radius: 8px;
+  width: 450px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10px;
+}
+
+.close-btn {
+  font-size: 24px;
+  cursor: pointer;
+}
+/* Container chính của Form */
+#editInfoForm, #editPassForm {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0px; 
+}
+
+/* Căn chỉnh từng nhóm Input */
+.form-group {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5px; /* Giảm margin bottom để sát nhau hơn */
+}
+
+.form-group label {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 4px; /* Khoảng cách giữa nhãn và ô input */
+    color: #374151;
+}
+.form-group input {
+    width: 100% !important; /* Đè lại các thuộc tính width cũ nếu có */
+    background-color: white;
+}
+.form-group input, 
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #D1D5DB;
+    border-radius: 8px;
+    font-size: 14px;
+    background-color: white;
+}
+
+/* Phần chứa 2 nút button */
+.modal-footer {
+    width: 410px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #E4E4E7;
+}
+
+/* Style nút bấm cho giống ảnh mẫu */
+.btn-cancel, .btn-save {
+    padding: 8px 20px;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.btn-cancel {
+    border: 1px solid #E4E4E7;
+    background-color: white;
+    color: #18181B;
+}
+
+.btn-save {
+    background-color: #4338CA;
+    color: white;
+    border: none;
+}
+
+/* --- RESPONSIVE SETTINGS --- */
+
+/* 1. Màn hình Tablet (Dưới 1024px) */
+@media (max-width: 1024px) {
+    /* Gỡ bỏ thuộc tính fixed để nội dung không bị menu đè */
+    .menu-container {
+        position: static !important;
+        width: 100% !important;
+        max-width: 650px;
+        margin: 0 auto 20px auto !important;
+        flex-direction: row !important; /* Dàn hàng ngang */
+        display: flex !important;
+        gap: 12px !important;
+        padding: 0 !important;
+    }
+
+    .menu-btn{
+        flex: 1;
+        min-width: 140px;
+        margin-bottom: 0 !important; /* Bỏ margin bottom của nav div cũ */
+        height: auto !important;
+    }
+
+    .layout-container {
+        display: flex;
+        flex-direction: column;
+        padding: 15px;
+    }
+
+    .section {
+        width: 100% !important;
+        max-width: 650px;
+    }
+}
+
+/* 2. Màn hình Mobile (Dưới 768px) */
+@media (max-width: 768px) {
+    .header {
+        padding: 0 15px;
+        justify-content: space-between;
+    }
+
+    .header p{
+        font-size: 14px;
+    }
+
+    .header-right span {
+        display: none; /* Ẩn tên user để tiết kiệm không gian */
+    }
+
+    /* Form chuyển thành 1 cột dọc */
+    form {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .input1, .input2 {
+        width: 100% !important;
+        min-width: unset !important;
+    }
+
+    .input1 label, .input2 label {
+        margin-bottom: 5px; /* Sửa lại khoảng cách nhãn */
+    }
+
+    /* Hai nút bấm chính bên dưới */
+    .button1 {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .button1 button {
+        width: 100%;
+    }
+
+    /* Modal (Cửa sổ chỉnh sửa) */
+    .modal-content {
+        width: 90% !important;
+        margin: 15% auto;
+        padding: 15px;
+    }
+
+    .modal-footer {
+        width: 100% !important;
+        justify-content: center;
+        padding-top: 10px;
+    }
+}
+
+/* 3. Màn hình điện thoại nhỏ (Dưới 480px) */
+@media (max-width: 480px) {
+    .menu-container {
+        display: grid !important;
+        /* Chia 2 cột bằng nhau tuyệt đối */
+        grid-template-columns: repeat(2, 1fr) !important; 
+        gap: 10px !important;
+        position: static !important;
+        width: 100% !important;
+    }
+
+    /* Đảm bảo tất cả các nút (bao gồm History) chỉ chiếm 1 cột */
+    .menu-btn {
+        grid-column: span 1 !important; 
+        width: 100% !important;
+        min-width: unset !important;
+        padding: 10px 5px !important;
+        margin-bottom: 0 !important;
+        height: 45px !important; /* Cố định chiều cao cho đều nhau */
+    }
+
+    .menu-btn .text {
+        font-size: 13px !important;
+        text-align: center;
+    }
+
+    .section1 {
+        padding: 15px;
+        font-size: 14px;
+        line-height: 24px;
+    }
+
+    h1 {
+        font-size: 18px;
+        line-height: 35px;
+    }
+
+    .section2, .section3, .section4 {
+        padding: 15px;
+    }
+
+    #money {
+        font-size: 20px;
+    }
+
+    /* Toast (Thông báo) */
+    .toast {
+        width: calc(100% - 40px);
+        right: 20px;
+        left: 20px;
+        min-width: unset;
+    }
+}
+/* Kích thước riêng cho modal logout */
+.logout-modal-size {
+    width: 450px !important;
+    padding: 24px !important;
+}
+
+/* Đường gạch ngang mảnh */
+.modal-divider {
+    border: 0;
+    border-top: 1px solid #edf2f7;
+    margin: 15px 0;
+}
+
+/* Nút xóa màu đỏ */
+.btn-delete-red {
+    background-color: #e53e3e;
+    color: white;
+    border: none;
+    padding: 8px 24px;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.btn-delete-red:hover {
+    background-color: #c53030;
+}
+
+/* Đảm bảo modal logout hiển thị ở giữa */
+#logoutConfirmModal {
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
